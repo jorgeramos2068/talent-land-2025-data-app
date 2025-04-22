@@ -45,7 +45,7 @@ export const HomeContent: React.FC = () => {
   return (
     <div className="w-full">
       <h1 className="font-bold text-2xl">Welcome to the Books Data App</h1>
-      <p className="my-4 text-lg">App designed for showing the use of TanStack Query.</p>
+      <p className="my-4 text-lg">App designed to show the use of TanStack Query.</p>
 
       {isLoading && (
         <div className="flex flex-row items-center justify-center">
