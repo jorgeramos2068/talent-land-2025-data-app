@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import { Header } from '@/components/layout';
-import './globals.css';
+import { Toaster as SonnerToaster } from '@/components/ui/sonner';
 import { Providers } from '@/providers';
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -35,6 +36,7 @@ export default function RootLayout({
               <main className="flex-1 h-[calc(100vh-4em)] px-8 py-5 w-full">{children}</main>
             </div>
           </div>
+          <SonnerToaster richColors />
         </Providers>
       </body>
     </html>
