@@ -31,7 +31,9 @@ export default function RootLayout({
         <Providers>
           <div className="flex flex-col text-base w-full">
             <Header />
-            {children}
+            <div className="flex flex-1 flex-row flex-wrap">
+              <main className="flex-1 h-[calc(100vh-4em)] px-8 py-5 w-full">{children}</main>
+            </div>
           </div>
         </Providers>
       </body>

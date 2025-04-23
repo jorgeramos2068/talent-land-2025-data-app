@@ -2,51 +2,36 @@
 
 import * as React from 'react';
 
-import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { LoaderCircleIcon } from 'lucide-react';
 
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Book } from '@/interfaces';
-import { LoaderCircleIcon } from 'lucide-react';
 
-export const HomeContent: React.FC = () => {
-  // const [books, setBooks] = React.useState<Book[]>([]);
-  // const [isLoading, setIsLoading] = React.useState(false);
-  // const [isError, setIsError] = React.useState<boolean>(false);
+export const Traditional: React.FC = () => {
+  const [books, setBooks] = React.useState<Book[]>([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isError, setIsError] = React.useState<boolean>(false);
 
-  // React.useEffect(() => {
-  //   const fetchBooks = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const response = await axios.get('http://localhost:3000/books');
-  //       setBooks(response.data);
-  //       setIsLoading(false);
-  //       setIsError(false);
-  //     } catch (err) {
-  //       setBooks([]);
-  //       setIsLoading(false);
-  //       setIsError(true);
-  //     }
-  //   };
-  //   fetchBooks();
-  // }, []);
-
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['books'],
-    queryFn: () => {
-      return axios.get('http://localhost:3000/books');
-    },
-  });
-
-  const books = data?.data ?? [];
-
-  // console.log({ data, isLoading });
+  React.useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get('http://localhost:3000/books');
+        setBooks(response.data);
+        setIsLoading(false);
+        setIsError(false);
+      } catch (err) {
+        setBooks([]);
+        setIsLoading(false);
+        setIsError(true);
+      }
+    };
+    fetchBooks();
+  }, []);
 
   return (
     <div className="w-full">
-      <h1 className="font-bold text-2xl">Welcome to the Books Data App</h1>
-      <p className="my-4 text-lg">App designed to show the use of TanStack Query.</p>
-
       {isLoading && (
         <div className="flex flex-row items-center justify-center">
           <LoaderCircleIcon className="animate-spin" size={50} color="rgb(37 99 235)" />

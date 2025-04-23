@@ -1,11 +1,20 @@
-import { HomeContent } from './_components/home-content';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-row flex-wrap">
-      <main className="flex-1 h-[calc(100vh-4em)] px-8 py-5 w-full">
-        <HomeContent />
-      </main>
+    <div>
+      <h1 className="font-bold text-2xl">Welcome to the Books Data App</h1>
+      <p className="my-4 text-lg">Please, select any of the following options.</p>
+
+      <div className="flex flex-col items-start justify-center gap-4">
+        <Link href={'/traditional'} className="text-blue-500 hover:underline">
+          Traditional Fetching
+        </Link>
+
+        <Link href={'/tanstack-query'} className="text-blue-500 hover:underline">
+          Fetching with TanStack Query
+        </Link>
+      </div>
     </div>
   );
 }
