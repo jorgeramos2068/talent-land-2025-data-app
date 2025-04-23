@@ -10,16 +10,19 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Book } from '@/interfaces';
 
 export const Query: React.FC = () => {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isFetching, isError } = useQuery({
     queryKey: ['books'],
     queryFn: () => {
       return axios.get('http://localhost:3000/books');
     },
+    // staleTime: 10000, // 10 seconds
+    // refetchOnWindowFocus: false,
+    // enabled: false,
   });
 
   const books = data?.data ?? [];
 
-  // console.log({ data, isLoading });
+  // console.log({ isFetching, isLoading });
 
   return (
     <div className="w-full">
