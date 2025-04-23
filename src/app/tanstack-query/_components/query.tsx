@@ -8,6 +8,7 @@ import { LoaderCircleIcon } from 'lucide-react';
 
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Book } from '@/interfaces';
+import { BookForm } from './book-form';
 
 export const Query: React.FC = () => {
   const { data, isLoading, isFetching, isError } = useQuery({
@@ -26,6 +27,8 @@ export const Query: React.FC = () => {
 
   return (
     <div className="w-full">
+      <BookForm />
+
       {isLoading && (
         <div className="flex flex-row items-center justify-center">
           <LoaderCircleIcon className="animate-spin" size={50} color="rgb(37 99 235)" />
